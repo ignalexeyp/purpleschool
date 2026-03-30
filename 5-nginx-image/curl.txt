@@ -1,0 +1,47 @@
+alexeyi@servpurple1:~/purpleschool$ sudo docker run -d -p 8081:80 --name test-container nginx-homework
+[sudo] password for alexeyi:
+0e9dce0ecb70383c40588e33a397dc479ad2c046931288edcc7b389e16a0b30d
+alexeyi@servpurple1:~/purpleschool$ curl http://localhost:8081
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт на Nginx</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Добро пожаловать!</h1>
+        <p>Это тестовая страница, работающая на Nginx в Docker контейнере.</p>
+        <p>Если вы видите эту страницу, значит конфигурация работает правильно!</p>
+    </div>
+</body>
+</html>
