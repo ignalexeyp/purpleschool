@@ -1,0 +1,59 @@
+alexeyi@servpurple1:~$ /home/alexeyi/postgres-test.sh
+=== 1. Очистка старых контейнеров ===
+postgres-container-new
+=== 2. Очистка старых данных ===
+=== 3. Запуск PostgreSQL (версия 17 для совместимости) ===
+1ac5f3dfab50bc4639f0d3b8fcfd643eef63a9a5ccf67810b3fadd7d4c4b3045
+=== 4. Ожидание запуска PostgreSQL ===
+=== 5. Создание тестовых данных ===
+CREATE TABLE
+INSERT 0 2
+ id | name
+----+-------
+  1 | test1
+  2 | test2
+(2 rows)
+
+=== 6. Проверка содержимого каталога данных ===
+total 136
+drwx------ 19 lxd  root    4096 Apr 22 18:57 .
+drwxr-xr-x  4 root root    4096 Apr 22 18:57 ..
+drwx------  6 lxd  docker  4096 Apr 22 18:57 base
+drwx------  2 lxd  docker  4096 Apr 22 18:57 global
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_commit_ts
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_dynshmem
+-rw-------  1 lxd  docker  5743 Apr 22 18:57 pg_hba.conf
+-rw-------  1 lxd  docker  2640 Apr 22 18:57 pg_ident.conf
+drwx------  4 lxd  docker  4096 Apr 22 18:57 pg_logical
+drwx------  4 lxd  docker  4096 Apr 22 18:57 pg_multixact
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_notify
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_replslot
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_serial
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_snapshots
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_stat
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_stat_tmp
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_subtrans
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_tblspc
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_twophase
+-rw-------  1 lxd  docker     3 Apr 22 18:57 PG_VERSION
+drwx------  4 lxd  docker  4096 Apr 22 18:57 pg_wal
+drwx------  2 lxd  docker  4096 Apr 22 18:57 pg_xact
+-rw-------  1 lxd  docker    88 Apr 22 18:57 postgresql.auto.conf
+-rw-------  1 lxd  docker 30965 Apr 22 18:57 postgresql.conf
+-rw-------  1 lxd  docker    36 Apr 22 18:57 postmaster.opts
+-rw-------  1 lxd  docker    94 Apr 22 18:57 postmaster.pid
+=== 7. Остановка и удаление контейнера ===
+postgres-container
+postgres-container
+=== 8. Перенос каталога в новое место ===
+=== 9. Запуск нового контейнера с новым путем ===
+bacf4b1b13933b59d7f9816b2de8bf3b97fda0437797d874ea6a62a13398e1df
+=== 10. Ожидание запуска ===
+=== 11. Проверка сохранности данных ===
+ id | name
+----+-------
+  1 | test1
+  2 | test2
+(2 rows)
+
+=== Готово! Данные сохранены ===
